@@ -1,0 +1,95 @@
+# Uncomment to profile shell with zprof.
+# zmodload zsh/zprof
+
+##
+# OH MY ZSH!
+# ----------
+export ZSH_DISABLE_COMPFIX="true"
+export ZSH="$HOME/.oh-my-zsh"
+
+# Disable auto-update to play nice with chezmoi.
+DISABLE_AUTO_UPDATE="true"
+
+ZSH_THEME="robbyrussell"
+CASE_SENSITIVE="true"
+DISABLE_AUTO_TITLE="false"
+
+plugins=(
+  colored-man-pages
+  git
+  gitfast
+  jump
+)
+
+source "$ZSH/oh-my-zsh.sh"
+
+
+##
+# Exports
+# -------
+export LANG="en_US.UTF-8"
+export LC_ALL="$LANG"
+
+export EDITOR="code --wait"
+export GIT_EDITOR="code --new-window --wait"
+
+export PYTHONDONTWRITEBYTECODE="nope"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PIPENV_VENV_IN_PROJECT=1
+
+# User installed binaries
+export PATH="$HOME/.local/bin:$PATH"
+
+# Go
+GOPATH="$HOME/.local/share/go"
+if [[ -d "$GOPATH" ]]; then
+  export GOPATH
+  export PATH="$PATH:$GOPATH/bin"
+fi
+
+# Pyenv
+PYENV_ROOT="$HOME/.pyenv"
+if [[ -d "$PYENV_ROOT" ]]; then
+  export PYENV_ROOT
+  export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+
+# IPython
+export IPYTHONDIR="$HOME/.config/ipython"
+
+# Rootless Docker
+# TODO: Find a better way to do this.
+if [[ -f "$HOME/.config/systemd/user/default.target.wants/docker.service" ]]; then
+  export DOCKER_HOST=unix:///run/user/1000/docker.sock
+fi
+
+##
+# Aliases
+# -------
+alias less="less -R"
+alias tree="tree -CA"
+
+# Shorthands
+alias cm="chezmoi"
+alias d="docker"
+alias dc="docker-compose"
+alias k="kubectl"
+
+# jump (oh-my-zsh plugin)
+alias J="jump"
+alias M="mark"
+
+# safe-rm: prevents potential disasters...
+if [[ -x "$(command -v safe-rm)" ]]; then alias rm="safe-rm"; fi
+
+
+##
+# Bootstrappers
+# -------------
+
+# Initialize direnv if installed.
+if [[ -x "$(command -v direnv)" ]]; then eval "$(direnv hook zsh)"; fi
+
+# Setup hub alias if hub is installed. (git -> hub)
+if [[ -x "$(command -v hub)" ]]; then eval "$(hub alias -s)"; fi
