@@ -48,6 +48,18 @@ if [[ -d "$GOPATH" ]]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
+# Conda
+CONDA_ROOT="$HOME/.local/miniconda3"
+if [[ -d "$CONDA_ROOT" ]]; then
+  # Bootstrap using shellscript when possible.
+  if [[ -f "$CONDA_ROOT/etc/profile.d/conda.sh" ]]; then
+    source "$CONDA_ROOT/etc/profile.d/conda.sh"
+    conda activate base
+  else
+    export PATH="$CONDA_ROOT/bin:$PATH"
+  fi
+fi
+
 # Pyenv
 PYENV_ROOT="$HOME/.pyenv"
 if [[ -d "$PYENV_ROOT" ]]; then
