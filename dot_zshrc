@@ -41,9 +41,6 @@ export GIT_EDITOR="code --new-window --wait"
 export PYTHONDONTWRITEBYTECODE="nope"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-# User installed binaries
-export PATH="$HOME/.local/bin:$PATH"
-
 # Go
 GOPATH="$HOME/.local/share/go"
 if [[ -d "$GOPATH" ]]; then
@@ -81,9 +78,14 @@ if [[ -f "$HOME/.config/systemd/user/default.target.wants/docker.service" ]]; th
   export DOCKER_HOST=unix:///run/user/1000/docker.sock
 fi
 
+# User installed binaries
+export PATH="$HOME/.local/bin:$PATH"
+
+
 ##
 # Aliases
 # -------
+
 alias less="less -R"
 alias tree="tree -CA"
 
