@@ -67,7 +67,8 @@ if [[ -d "$CONDA_ROOT" ]]; then
   # Bootstrap using shellscript when possible.
   if [[ -f "$CONDA_ROOT/etc/profile.d/conda.sh" ]]; then
     source "$CONDA_ROOT/etc/profile.d/conda.sh"
-    conda activate base
+    # Uncomment to initialize the base environment.
+    # conda activate base
   else
     export PATH="$CONDA_ROOT/bin:$PATH"
   fi
