@@ -41,6 +41,19 @@ export GIT_EDITOR="code --new-window --wait"
 export PYTHONDONTWRITEBYTECODE="nope"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+# Homebrew
+if [[ -d "/opt/homebrew" ]]; then
+  export HOMEBREW_PREFIX="/opt/homebrew"
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+  export HOMEBREW_REPOSITORY="/opt/homebrew"
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
+  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_ENV_HINTS=1
+fi
+
 # Go
 GOPATH="$HOME/.local/share/go"
 if [[ -d "$GOPATH" ]]; then
