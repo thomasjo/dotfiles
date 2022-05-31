@@ -78,7 +78,6 @@ fi
 PYENV_ROOT="$HOME/.pyenv"
 if [[ -d "$PYENV_ROOT" ]]; then
   export PYENV_ROOT
-  export PATH="$PYENV_ROOT/bin:$PATH"
 
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
@@ -123,6 +122,9 @@ if [[ -x "$(command -v safe-rm)" ]]; then alias rm="safe-rm"; fi
 
 # Initialize direnv if installed.
 if [[ -x "$(command -v direnv)" ]]; then eval "$(direnv hook zsh)"; fi
+
+# Initialize pyenv if installed.
+if [[ -x "$(command -v pyenv)" ]]; then eval "$(pyenv init -)"; fi
 
 # Setup hub alias if hub is installed. (git -> hub)
 if [[ -x "$(command -v hub)" ]]; then eval "$(hub alias -s)"; fi
