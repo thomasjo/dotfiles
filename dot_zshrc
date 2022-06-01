@@ -128,3 +128,11 @@ if [[ -x "$(command -v pyenv)" ]]; then eval "$(pyenv init -)"; fi
 
 # Setup hub alias if hub is installed. (git -> hub)
 if [[ -x "$(command -v hub)" ]]; then eval "$(hub alias -s)"; fi
+
+
+##
+# Miscellaneous
+# -------------
+
+# Suppress annoying Python warnings.
+export PYTHONWARNINGS="ignore:deprecation:Warning"
