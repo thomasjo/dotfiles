@@ -7,6 +7,7 @@
 
 export ZSH_DISABLE_COMPFIX="true"
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$HOME/.local/share/oh-my-zsh"
 
 # Disable auto-update to play nice with chezmoi.
 DISABLE_AUTO_UPDATE="true"
@@ -20,6 +21,7 @@ plugins=(
   git
   gitfast
   jump
+  norce
 )
 
 source "$ZSH/oh-my-zsh.sh"
