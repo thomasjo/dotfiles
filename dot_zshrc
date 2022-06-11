@@ -24,6 +24,12 @@ plugins=(
   norce
 )
 
+# Enable brew completions to be automatically picked up.
+# NOTE: We need to set FPATH before bootstrapping Oh My Zsh.
+if [[ -d "/opt/homebrew" ]]; then
+  FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+fi
+
 source "$ZSH/oh-my-zsh.sh"
 
 
