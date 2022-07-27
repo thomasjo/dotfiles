@@ -123,6 +123,26 @@ alias M="mark"
 # safe-rm: prevents potential disasters...
 if [[ -x "$(command -v safe-rm)" ]]; then alias rm="safe-rm"; fi
 
+# exa -> ls
+if [[ -x "$(command -v exa)" ]]; then
+  exa_base="exa --group-directories-first"
+  exa_long="${exa_base} --long --git --classify"
+
+  alias ls="${exa_base}"
+  alias ll="${exa_long}"
+  alias la="${exa_long} --all"
+  alias lx="${exa_long} --all --extended"
+
+  alias lS="${exa_base} --oneline"
+  alias lT="${exa_base} --tree --level=2"
+
+  # Remove leftover, unwanted ls aliases...
+  ls_aliases=( $(alias | grep "ls " | cut -d= -f1) )
+  for leftover in "${ls_aliases[@]}"; do
+    unalias "${leftover}"
+  done
+fi
+
 
 ##
 # Bootstrappers
