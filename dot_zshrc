@@ -86,7 +86,6 @@ fi
 PYENV_ROOT="$HOME/.pyenv"
 if [[ -d "$PYENV_ROOT" ]]; then
   export PYENV_ROOT
-
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
 
@@ -161,6 +160,10 @@ if [[ -x "$(command -v hub)" ]]; then eval "$(hub alias -s)"; fi
 ##
 # Miscellaneous
 # -------------
+
+# Ensure hostname is displayed as lowercase.
+export HOST="${HOST:l}"
+export HOSTNAME="${HOST}"
 
 # Suppress annoying Python warnings.
 export PYTHONWARNINGS="ignore:deprecation:Warning"
