@@ -95,7 +95,7 @@ export IPYTHONDIR="$HOME/.config/ipython"
 # Rootless Docker
 # TODO: Find a better way to do this.
 if [[ -f "$HOME/.config/systemd/user/default.target.wants/docker.service" ]]; then
-  export DOCKER_HOST=unix:///run/user/1000/docker.sock
+  export DOCKER_HOST="unix:///run/user/$(id -u)/docker.sock"
 fi
 
 # User installed binaries
