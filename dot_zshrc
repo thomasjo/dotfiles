@@ -101,6 +101,19 @@ fi
 # User installed binaries
 export PATH="$HOME/.local/bin:$PATH"
 
+##
+# Certificates
+# ------------
+
+# Check if custom CA bundle exists.
+CUSTOM_CA_BUNDLE="$HOME/.ssl/certs/bundle.pem"
+if [[ -f "${CUSTOM_CA_BUNDLE}" ]]; then
+  export SSL_CERT_FILE="${CUSTOM_CA_BUNDLE}"
+  export CURL_CA_BUNDLE="${CUSTOM_CA_BUNDLE}"
+  export REQUESTS_CA_BUNDLE="${CUSTOM_CA_BUNDLE}"
+  export NODE_EXTRA_CA_CERTS="${CUSTOM_CA_BUNDLE}"
+fi
+
 
 ##
 # Aliases
