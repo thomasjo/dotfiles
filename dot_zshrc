@@ -12,7 +12,7 @@ export ZSH_CUSTOM="$HOME/.local/share/oh-my-zsh"
 # Disable auto-update to play nice with chezmoi.
 DISABLE_AUTO_UPDATE="true"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="thomasjo"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_TITLE="false"
 
