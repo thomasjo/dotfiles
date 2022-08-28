@@ -63,29 +63,27 @@ if [[ -d "/opt/homebrew" ]]; then
 fi
 
 # Go
-GOPATH="$HOME/.local/share/go"
-if [[ -d "$GOPATH" ]]; then
-	export GOPATH
+if [[ -d "$HOME/.local/share/go" ]]; then
+	export GOPATH="$HOME/.local/share/go"
 	export PATH="$GOPATH/bin:$PATH"
 fi
 
 # Conda
-CONDA_ROOT="$HOME/.local/miniconda3"
-if [[ -d "$CONDA_ROOT" ]]; then
+if [[ -d "$HOME/.local/miniconda3" ]]; then
+	conda_root="$HOME/.local/miniconda3"
 	# Bootstrap using shellscript when possible.
-	if [[ -f "$CONDA_ROOT/etc/profile.d/conda.sh" ]]; then
-		source "$CONDA_ROOT/etc/profile.d/conda.sh"
+	if [[ -f "$conda_root/etc/profile.d/conda.sh" ]]; then
+		source "$conda_root/etc/profile.d/conda.sh"
 		# Uncomment to initialize the base environment.
 		# conda activate base
 	else
-		export PATH="$CONDA_ROOT/bin:$PATH"
+		export PATH="$conda_root/bin:$PATH"
 	fi
 fi
 
 # Pyenv
-PYENV_ROOT="$HOME/.pyenv"
-if [[ -d "$PYENV_ROOT" ]]; then
-	export PYENV_ROOT
+if [[ -d "$HOME/.pyenv" ]]; then
+	export PYENV_ROOT="$HOME/.pyenv"
 	export PATH="$PYENV_ROOT/bin:$PATH"
 
 	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
@@ -108,8 +106,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # ------------
 
 # Check if custom CA bundle exists.
-CUSTOM_CA_BUNDLE="$HOME/.ssl/certs/bundle.pem"
-if [[ -f "${CUSTOM_CA_BUNDLE}" ]]; then
+if [[ -f "$HOME/.ssl/certs/bundle.pem" ]]; then
+	export CUSTOM_CA_BUNDLE="$HOME/.ssl/certs/bundle.pem"
 	export SSL_CERT_FILE="${CUSTOM_CA_BUNDLE}"
 	export CURL_CA_BUNDLE="${CUSTOM_CA_BUNDLE}"
 	export REQUESTS_CA_BUNDLE="${CUSTOM_CA_BUNDLE}"
