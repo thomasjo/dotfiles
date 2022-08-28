@@ -120,6 +120,7 @@ fi
 # -------
 
 alias less="less -R"
+alias printenv="printenv | sort"
 alias tree="tree -CA"
 
 # Shorthands
