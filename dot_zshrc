@@ -58,10 +58,6 @@ elif [[ -n "$SSH_CLIENT" ]]; then
 	export GIT_EDITOR="${EDITOR}"
 fi
 
-# Python
-export PYTHONDONTWRITEBYTECODE="nope"
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 # Homebrew
 if [[ -d "/opt/homebrew" ]]; then
 	export HOMEBREW_PREFIX="/opt/homebrew"
