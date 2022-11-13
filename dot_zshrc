@@ -114,6 +114,13 @@ if [[ -f "$HOME/.config/systemd/user/default.target.wants/docker.service" ]]; th
 	export DOCKER_HOST="unix:///run/user/$(id -u)/docker.sock"
 fi
 
+# Google Cloud SDK
+if [[ -d "$HOME/.local/share/google-cloud-sdk" ]]; then
+	export CLOUDSDK_PYTHON="python3"
+	export CLOUDSDK_ROOT_DIR="$HOME/.local/share/google-cloud-sdk"
+	export PATH="$PATH:$CLOUDSDK_ROOT_DIR/bin"
+fi
+
 # User installed binaries
 export PATH="$HOME/.local/bin:$PATH"
 
