@@ -77,6 +77,13 @@ if [[ -d "$HOME/.local/share/go" ]]; then
 	export PATH="$GOPATH/bin:$PATH"
 fi
 
+# Rust
+if [[ -d "$HOME/.local/share/rust" ]]; then
+	export RUSTUP_HOME="$HOME/.local/share/rust/rustup"
+	export CARGO_HOME="$HOME/.local/share/rust/cargo"
+	export PATH="$CARGO_HOME/bin:$PATH"
+fi
+
 # Conda
 if [[ -d "$HOME/.local/miniconda3" ]]; then
 	conda_root="$HOME/.local/miniconda3"
