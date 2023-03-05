@@ -108,6 +108,9 @@ fi
 # IPython
 export IPYTHONDIR="$HOME/.config/ipython"
 
+# Pipenv
+export PIPENV_VENV_IN_PROJECT=1
+
 # Docker
 if [[ -d "$HOME/.docker/bin" ]]; then
 	export PATH="$HOME/.docker/bin:$PATH"
