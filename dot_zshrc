@@ -108,6 +108,11 @@ fi
 # IPython
 export IPYTHONDIR="$HOME/.config/ipython"
 
+# Docker
+if [[ -d "$HOME/.docker/bin" ]]; then
+	export PATH="$HOME/.docker/bin:$PATH"
+fi
+
 # Rootless Docker
 # TODO: Find a better way to do this.
 if [[ -f "$HOME/.config/systemd/user/default.target.wants/docker.service" ]]; then
