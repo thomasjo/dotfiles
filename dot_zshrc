@@ -212,3 +212,19 @@ export HOSTNAME="${HOST}"
 
 # Suppress annoying Python warnings.
 export PYTHONWARNINGS="ignore:deprecation:Warning"
+
+
+##
+# VS Code integrated terminal hacks
+# ---------------------------------
+# TODO: Consider making this into an omz plugin.
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+	# This is a silly hack to ensure direnv environments are initialized when a
+	# new integrated terminal is opened. The underlying problem is that when an
+	# integrated terminal is initialized, it is started in the workspace root.
+	# However, direnv requires actively navigating to that directory to trigger
+	# the whole environment initialization procedure.
+	if [[ -f "$PWD/.envrc" ]]; then
+		pushd ..  >/dev/null 2>&1 && popd >/dev/null 2>&1 || true
+	fi
+fi
