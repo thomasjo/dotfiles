@@ -1,5 +1,5 @@
 function vpn() {
-	local usage="Usage: "$0" [kill|revive]"
+	local usage="Usage: $0 <kill|revive>"
 	case $# in
 		0)
 			echo "$usage"
