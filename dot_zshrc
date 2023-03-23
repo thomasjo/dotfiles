@@ -28,7 +28,6 @@ fi
 FPATH="$HOME/.local/share/zsh/completions:${FPATH}"
 
 plugins=(
-	colored-man-pages
 	git
 	gitfast
 	jump
