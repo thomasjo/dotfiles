@@ -28,6 +28,7 @@ fi
 FPATH="$HOME/.local/share/zsh/completions:${FPATH}"
 
 plugins=(
+	evalcache
 	git
 	gitfast
 	jump
@@ -192,13 +193,13 @@ fi
 # -------------
 
 # Initialize direnv if installed.
-if [[ -x "$(command -v direnv)" ]]; then eval "$(direnv hook zsh)"; fi
+if [[ -x "$(command -v direnv)" ]]; then _evalcache direnv hook zsh; fi
 
 # Initialize pyenv if installed.
-if [[ -x "$(command -v pyenv)" ]]; then eval "$(pyenv init -)"; fi
+if [[ -x "$(command -v pyenv)" ]]; then _evalcache pyenv init -; fi
 
 # Setup hub alias if hub is installed. (git -> hub)
-if [[ -x "$(command -v hub)" ]]; then eval "$(hub alias -s)"; fi
+if [[ -x "$(command -v hub)" ]]; then _evalcache hub alias -s; fi
 
 
 ##
