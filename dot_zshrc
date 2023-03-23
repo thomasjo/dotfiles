@@ -1,5 +1,8 @@
+# ==============================================================================
 # Uncomment to profile shell with zprof.
 # zmodload zsh/zprof
+# ------------------------------------------------------------------------------
+
 
 ##
 # OH MY ZSH!
@@ -228,3 +231,9 @@ if [[ "$TERM_PROGRAM" == "vscode" ]]; then
 		pushd ..  >/dev/null 2>&1 && popd >/dev/null 2>&1 || true
 	fi
 fi
+
+
+# ------------------------------------------------------------------------------
+# Uncomment to profile shell startup time, and print the results to stdout.
+# zprof
+# ==============================================================================
