@@ -5,6 +5,23 @@
 
 
 ##
+# Powerlevel10k Instant Prompt™
+# -----------------------------
+
+# Begin initializing direnv, if installed. Doing it here is necessary to ensure
+# that direnv is initialized before Instant Prompt does its thing.
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+
+# Initialize Instant Prompt.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Finalize direnv initialization.
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+
+
+##
 # OH MY ZSH!
 # ----------
 
@@ -17,9 +34,9 @@ if [[ ! -d "$ZSH/.git" ]]; then
   DISABLE_AUTO_UPDATE="true"
 fi
 
-ZSH_THEME="thomasjo"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_TITLE="false"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Enable brew completions to be automatically picked up.
 # NOTE: We need to set FPATH before bootstrapping Oh My Zsh.
@@ -123,6 +140,13 @@ if [[ "$TERM_PROGRAM" == "vscode" ]]; then
 		pushd ..  >/dev/null 2>&1 && popd >/dev/null 2>&1 || true
 	fi
 fi
+
+
+##
+# Powerlevel10k theme customization
+# ---------------------------------
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
 # ------------------------------------------------------------------------------
