@@ -105,13 +105,13 @@ fi
 # -------------
 
 # Initialize direnv if installed.
-if [[ -x "$(command -v direnv)" ]]; then _evalcache direnv hook zsh; fi
+# (( ${+commands[direnv]} )) && _evalcache direnv hook zsh
 
 # Initialize pyenv if installed.
-if [[ -x "$(command -v pyenv)" ]]; then _evalcache pyenv init - --no-rehash; fi
+(( ${+commands[pyenv]} )) && _evalcache pyenv init - --no-rehash
 
 # Setup hub alias if hub is installed. (git -> hub)
-if [[ -x "$(command -v hub)" ]]; then _evalcache hub alias -s; fi
+(( ${+commands[hub]} )) && _evalcache hub alias -s
 
 
 ##
