@@ -20,3 +20,10 @@ layout_poetry() {
   export POETRY_ACTIVE=1
   export VIRTUAL_ENV
 }
+
+function join_by {
+  local d=${1-} f=${2-}
+  if shift 2; then
+    printf %s "$f" "${@/#/$d}"
+  fi
+}
