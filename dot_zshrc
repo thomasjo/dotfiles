@@ -41,18 +41,18 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Enable brew completions to be automatically picked up.
 # NOTE: We need to set FPATH before bootstrapping Oh My Zsh.
 if [[ -d "/opt/homebrew" ]]; then
-	FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+  FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 fi
 
 # Enable user-defined completions to be automatically picked up.
 FPATH="$HOME/.local/share/zsh/completions:${FPATH}"
 
 plugins=(
-	evalcache
-	git
-	gitfast
-	jump
-	norce
+  evalcache
+  git
+  gitfast
+  jump
+  norce
 )
 
 source "$ZSH/oh-my-zsh.sh"
@@ -81,22 +81,22 @@ if [[ -x "$(command -v safe-rm)" ]]; then alias rm="safe-rm"; fi
 
 # exa -> ls
 if [[ -x "$(command -v exa)" ]]; then
-	exa_base="exa --group-directories-first"
-	exa_long="${exa_base} --long --git --classify"
+  exa_base="exa --group-directories-first"
+  exa_long="${exa_base} --long --git --classify"
 
-	alias ls="${exa_base}"
-	alias ll="${exa_long}"
-	alias la="${exa_long} --all"
-	alias lx="${exa_long} --all --extended"
+  alias ls="${exa_base}"
+  alias ll="${exa_long}"
+  alias la="${exa_long} --all"
+  alias lx="${exa_long} --all --extended"
 
-	alias lS="${exa_base} --oneline"
-	alias lT="${exa_base} --tree --level=2"
+  alias lS="${exa_base} --oneline"
+  alias lT="${exa_base} --tree --level=2"
 
-	# Remove leftover, unwanted ls aliases...
-	ls_aliases=( $(alias | grep "ls " | cut -d= -f1) )
-	for leftover in "${ls_aliases[@]}"; do
-		unalias "${leftover}"
-	done
+  # Remove leftover, unwanted ls aliases...
+  ls_aliases=( $(alias | grep "ls " | cut -d= -f1) )
+  for leftover in "${ls_aliases[@]}"; do
+    unalias "${leftover}"
+  done
 fi
 
 
@@ -131,14 +131,14 @@ export PYTHONWARNINGS="ignore:deprecation:Warning"
 # ---------------------------------
 # TODO: Consider making this into an omz plugin.
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-	# This is a silly hack to ensure direnv environments are initialized when a
-	# new integrated terminal is opened. The underlying problem is that when an
-	# integrated terminal is initialized, it is started in the workspace root.
-	# However, direnv requires actively navigating to that directory to trigger
-	# the whole environment initialization procedure.
-	if [[ -f "$PWD/.envrc" ]]; then
-		pushd ..  >/dev/null 2>&1 && popd >/dev/null 2>&1 || true
-	fi
+  # This is a silly hack to ensure direnv environments are initialized when a
+  # new integrated terminal is opened. The underlying problem is that when an
+  # integrated terminal is initialized, it is started in the workspace root.
+  # However, direnv requires actively navigating to that directory to trigger
+  # the whole environment initialization procedure.
+  if [[ -f "$PWD/.envrc" ]]; then
+    pushd ..  >/dev/null 2>&1 && popd >/dev/null 2>&1 || true
+  fi
 fi
 
 
