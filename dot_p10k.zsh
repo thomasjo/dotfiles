@@ -369,6 +369,7 @@
     if (( $1 )); then
       # Styling for up-to-date Git status.
       local       meta='%f'   # default foreground
+      local       name='%5F'  # magenta foreground
       local      clean='%2F'  # green foreground
       local   modified='%3F'  # yellow foreground
       local  untracked='%4F'  # blue foreground
@@ -376,6 +377,7 @@
     else
       # Styling for incomplete and stale Git status.
       local       meta='%f'  # default foreground
+      local       name='%f'  # default foreground
       local      clean='%f'  # default foreground
       local   modified='%f'  # default foreground
       local  untracked='%f'  # default foreground
@@ -390,7 +392,7 @@
       # Otherwise show the first 12 … the last 12.
       # Tip: To always show local branch name in full without truncation, delete the next line.
       (( $#branch > 32 )) && branch[13,-13]="…"  # <-- this line
-      res+="${clean}${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%}"
+      res+="${name}${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%}"
     fi
 
     if [[ -n $VCS_STATUS_TAG
@@ -403,17 +405,17 @@
       # Otherwise show the first 12 … the last 12.
       # Tip: To always show tag name in full without truncation, delete the next line.
       (( $#tag > 32 )) && tag[13,-13]="…"  # <-- this line
-      res+="${meta}#${clean}${tag//\%/%%}"
+      res+="${meta}#${name}${tag//\%/%%}"
     fi
 
     # Display the current Git commit if there is no branch and no tag.
     # Tip: To always display the current Git commit, delete the next line.
     [[ -z $VCS_STATUS_LOCAL_BRANCH && -z $VCS_STATUS_TAG ]] &&  # <-- this line
-      res+="${meta}@${clean}${VCS_STATUS_COMMIT[1,8]}"
+      res+="${meta}@${name}${VCS_STATUS_COMMIT[1,8]}"
 
     # Show tracking branch name if it differs from local branch.
     if [[ -n ${VCS_STATUS_REMOTE_BRANCH:#$VCS_STATUS_LOCAL_BRANCH} ]]; then
-      res+="${meta}:${clean}${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}"
+      res+="${meta}:${name}${(V)VCS_STATUS_REMOTE_BRANCH//\%/%%}"
     fi
 
     # Display "wip" if the latest commit's summary contains "wip" or "WIP".
