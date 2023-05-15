@@ -10,7 +10,7 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Locale
 export LANG="en_US.UTF-8"
-export LC_ALL="$LANG"
+export LC_ALL="${LANG}"
 
 # Editors
 export EDITOR="code --wait"
