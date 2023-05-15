@@ -93,6 +93,22 @@ if [[ -d "${XDG_DATA_HOME}/google-cloud-sdk" ]]; then
   export PATH="${PATH}:${CLOUDSDK_ROOT_DIR}/bin"
 fi
 
+# BentoML
+export BENTOML_HOME="${XDG_DATA_HOME}/bentoml"
+if [[ -d "${BENTOML_HOME}" ]]; then
+  # Disable tracking.
+  # TODO: Check if this has to be "True" due to bad assumptions.
+  export BENTOML_DO_NOT_TRACK=1
+fi
+
+# BentoML CLI
+export BENTOCTL_HOME="${XDG_DATA_HOME}/bentoctl"
+if [[ -d "${BENTOCTL_HOME}" ]]; then
+  # Disable tracking.
+  # TODO: Check if this has to be "True" due to bad assumptions.
+  export BENTOCTL_DO_NOT_TRACK=1
+fi
+
 # User installed binaries
 export PATH="${HOME}/.local/bin:${PATH}"
 
