@@ -70,7 +70,7 @@ if [[ -d "${HOME}/.pyenv" ]]; then
 fi
 
 # IPython
-export IPYTHONDIR="$HOME/.config/ipython"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
