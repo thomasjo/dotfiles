@@ -69,6 +69,10 @@ if [[ -d "${PYENV_ROOT}" ]]; then
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
 
+# Poetry
+export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/poetry"
+export POETRY_HOME="${XDG_DATA_HOME}/poetry"
+
 # IPython
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
