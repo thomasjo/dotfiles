@@ -1,11 +1,12 @@
 # My opinionated dotfiles
 
 I don't recommend cloning this repo and opting into my way of doing things,
-unless you intend to my dotfiles as a foundation for making something that fits
-your needs and desires.
+unless you intend to use my dotfiles as a foundation for making something that
+fits your needs and desires.
 
 Don't fork the repo, instead clone/download the repo and copy whatever files or
 blocks of configuration makes sense to you.
+
 
 ## The setup
 
@@ -37,6 +38,34 @@ chezmoi init --apply thomasjo
 I highly recommend reading the [Chezmoi quick start][quick-start], as well as
 skimming through the [Chezmoi user guide][user-guide] to familiarize yourself
 with "daily" operations, Chezmoi terminology, etc.
+
+
+## Making my dotfiles your dotfiles
+
+If you've experimented with my dotfiles and you want to make them yours, then I
+think one of the easiest routes to follow is to first create your own dotfiles
+repo on GitHub (or somewhere else). Make sure the new repo is completely bare,
+which means no auto-generated `README.md`, `LICENSE`, or similar files.
+
+After creating your remote repo, navigate to the Chezmoi source directory. An
+easy way is to use the `chezmoi cd` command. From the Chezmoi source directory,
+you should "re-init" the existing dotfiles repo by first removing the existing
+`.git` sub-directory, then initialize an empty, local Git repo. Stage whichever
+files you want to keep, commit, and push to your remote repo;
+
+```console
+chezmoi cd
+rm -rf .git
+git init -b main .
+git remote add origin <your-remote-repo-address>
+git add <files-you-want-to-keep ...>
+git commit
+git push -u origin main
+```
+
+Make sure you delete any files you don't want to keep. At this point it's also
+a good idea to use commands such as `chezmoi doctor` and `chezmoi [un]managed`
+to ensure your dotfiles are properly setup and working as expected.
 
 
 <!-- References -->
