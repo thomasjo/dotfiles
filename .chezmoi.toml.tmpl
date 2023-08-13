@@ -1,0 +1,12 @@
+{{- /* Prompt for config values once. If terminal is non-interactive uses default values. */ -}}
+{{- $name := promptStringOnce . "name" "What is your preferred name" "Thomas Johansen" -}}
+{{- $email := promptStringOnce . "email" "What is your email address" "thomasjo@gmail.com" -}}
+
+{{- $helper := promptStringOnce .git "credential.helper" "Which git credential helper do you want to use" "osxkeychain" -}}
+
+[data]
+name = "{{ $name }}"
+email = "{{ $email }}"
+
+[data.git]
+credential.helper = "{{ $helper }}"
