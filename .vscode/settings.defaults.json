@@ -1,10 +1,12 @@
 {
   "files.associations": {
     "*_gitconfig": "ini",
+    "*_profile": "shellscript",
     "*_zprofile": "shellscript",
     "*_zshrc": "shellscript",
 
     "*.tmpl": "jinja",
+    "*.toml.tmpl": "jinja-toml",
     "*_gitconfig.tmpl": "jinja-properties",
     "*_zprofile.tmpl": "jinja-shell",
     "*_zshrc.tmpl": "jinja-shell",
