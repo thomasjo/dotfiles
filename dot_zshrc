@@ -82,9 +82,10 @@ alias M="mark"
 # safe-rm: prevents potential disasters...
 if [[ -x "$(command -v safe-rm)" ]]; then alias rm="safe-rm"; fi
 
-# exa -> ls
-if [[ -x "$(command -v exa)" ]]; then
-  exa_base="exa --group-directories-first"
+# eza/exa -> ls
+if [[ -x "$(command -v eza)" || -x "$(command -v exa)" ]]; then
+  exa_variant="$(command -v eza || command -v exa)"
+  exa_base="${exa_variant} --group-directories-first"
   exa_long="${exa_base} --long --git --classify"
 
   alias ls="${exa_base}"
