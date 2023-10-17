@@ -84,9 +84,14 @@ if [[ -d "${HOME}/.docker/bin" ]]; then
   export PATH="${HOME}/.docker/bin:${PATH}"
 fi
 
-# Rootless Docker
+# Rootless Docker (macOS)
+if [[ -S "${HOME}/.docker/run/docker.sock" ]]; then
+  export DOCKER_HOST="unix://${HOME}/.docker/run/docker.sock"
+fi
+
+# Rootless Docker (Linux)
 # TODO: Find a better way to do this.
-if [[ -f "$XDG_CONFIG_HOME/systemd/user/default.target.wants/docker.service" ]]; then
+if [[ -f "${XDG_CONFIG_HOME}/systemd/user/default.target.wants/docker.service" ]]; then
   export DOCKER_HOST="unix:///run/user/${UID}/docker.sock"
 fi
 
