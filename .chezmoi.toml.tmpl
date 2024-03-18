@@ -2,7 +2,7 @@
 {{- $name := promptStringOnce . "name" "What is your preferred name" "Thomas Johansen" -}}
 {{- $email := promptStringOnce . "email" "What is your email address" "thomasjo@gmail.com" -}}
 
-{{- $helper := promptStringOnce .git "credential.helper" "Which git credential helper do you want to use" "osxkeychain" -}}
+{{- $helper := promptStringOnce . "git.credential.helper" "Which git credential helper do you want to use" "osxkeychain" -}}
 
 [data]
 name = "{{ $name }}"
