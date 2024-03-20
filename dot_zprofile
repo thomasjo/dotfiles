@@ -69,6 +69,13 @@ if [[ -d "${PYENV_ROOT}" ]]; then
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
 
+# Rye
+export RYE_HOME="${XDG_DATA_HOME}/rye"
+if [[ -d "${RYE_HOME}" ]]; then
+  # TODO: Uncomment when rye is ready and we can stop using pyenv.
+  # export PATH="${RYE_HOME}/shims:${PATH}"
+fi
+
 # Poetry
 export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/poetry"
 export POETRY_HOME="${XDG_DATA_HOME}/poetry"
