@@ -69,15 +69,31 @@ alias less="less -R"
 alias printenv="printenv | LC_ALL=C sort"
 alias tree="tree -CA"
 
-# Shorthands
-alias cm="chezmoi"
-alias d="docker"
-alias dc="docker-compose"
-alias k="kubectl"
+# Chezmoi
+if [[ -x "$(command -v chezmoi)" ]]; then alias cm="chezmoi"; fi
+
+# Docker
+if [[ -x "$(command -v docker)" ]]; then
+  alias d="docker"
+
+  if [[ -x "$(command -v docker-compose)" ]]; then
+    alias dc="docker-compose"
+  else
+    alias dc="docker compose"
+  fi
+fi
+
+# kubectl
+if [[ -x "$(command -v kubectl)" ]]; then alias k="kubectl"; fi
 
 # jump (oh-my-zsh plugin)
 alias J="jump"
 alias M="mark"
+
+# Homebrew
+if [[ -x "$(command -v brew)" ]]; then
+  alias bubu="brew update && brew upgrade"
+fi
 
 # safe-rm: prevents potential disasters...
 if [[ -x "$(command -v safe-rm)" ]]; then alias rm="safe-rm"; fi
