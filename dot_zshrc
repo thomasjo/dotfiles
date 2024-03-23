@@ -75,12 +75,7 @@ if [[ -x "$(command -v chezmoi)" ]]; then alias cm="chezmoi"; fi
 # Docker
 if [[ -x "$(command -v docker)" ]]; then
   alias d="docker"
-
-  if [[ -x "$(command -v docker-compose)" ]]; then
-    alias dc="docker-compose"
-  else
-    alias dc="docker compose"
-  fi
+  alias dc="docker compose"
 fi
 
 # kubectl
