@@ -1,0 +1,16 @@
+# EditorConfig is awesome: https://EditorConfig.org
+root = true
+
+[*]
+# Sensible defaults for all files.
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+# Sensible indent style.
+indent_style = space
+indent_size = 2
+
+# Matches e.g., `dot_gitconfig` and `dot_gitconfig.tmpl`.
+[*_gitconfig{,.tmpl}]
+indent_style = tab
