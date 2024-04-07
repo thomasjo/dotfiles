@@ -24,6 +24,13 @@ elif [[ -n "${SSH_CLIENT}" ]]; then
   export GIT_EDITOR="${EDITOR}"
 fi
 
+# Zsh
+# NOTE: This doesn't seem to work on macOS.
+export HISTFILE="${XDG_STATE_HOME}/zsh/history"
+
+# Less
+export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
+
 # Homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
 if [[ -d "${HOMEBREW_PREFIX}" ]]; then
@@ -36,6 +43,25 @@ if [[ -d "${HOMEBREW_PREFIX}" ]]; then
   export HOMEBREW_NO_ANALYTICS=1
   export HOMEBREW_NO_ENV_HINTS=1
 fi
+
+# .NET
+export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet"
+if [[ -d "${DOTNET_CLI_HOME}" ]]; then
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+fi
+
+# Ruby: Bundler + Gem
+export BUNDLE_USER_CONFIG="${XDG_CONFIG_HOME}/bundle"
+export BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
+export BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
+export GEM_HOME="${XDG_DATA_HOME}/gem"
+export GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
+
+# Node.js
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
+
+# Gradle
+export GRADLE_USER_HOME="${XDG_DATA_HOME}/gradle"
 
 # Go
 export GOPATH="${XDG_DATA_HOME}/go"
@@ -62,7 +88,7 @@ if [[ -d "${HOME}/.local/miniconda3" ]]; then
 fi
 
 # Pyenv
-export PYENV_ROOT="${HOME}/.pyenv"
+export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
 if [[ -d "${PYENV_ROOT}" ]]; then
   export PATH="${PYENV_ROOT}/bin:${PATH}"
 
@@ -80,20 +106,35 @@ fi
 export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/poetry"
 export POETRY_HOME="${XDG_DATA_HOME}/poetry"
 
+# Python
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/startup.py"
+
+# Matplotlib
+export MPLCONFIGDIR="${XDG_CONFIG_HOME}/matplotlib"
+
+# Jupyter
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+
 # IPython
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
 
+# Keras
+export KERAS_HOME="${XDG_STATE_HOME}/keras"
+
 # Docker
-if [[ -d "${HOME}/.docker/bin" ]]; then
-  export PATH="${HOME}/.docker/bin:${PATH}"
+# NOTE: This doesn't work with Docker Desktop. https://github.com/docker/roadmap/issues/408.
+# export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export DOCKER_CONFIG="${HOME}/.docker"
+if [[ -d "${DOCKER_CONFIG}/bin" ]]; then
+  export PATH="${DOCKER_CONFIG}/bin:${PATH}"
 fi
 
 # Rootless Docker (macOS)
-if [[ -S "${HOME}/.docker/run/docker.sock" ]]; then
-  export DOCKER_HOST="unix://${HOME}/.docker/run/docker.sock"
+if [[ -S "${DOCKER_CONFIG}/run/docker.sock" ]]; then
+  export DOCKER_HOST="unix://${DOCKER_CONFIG}/run/docker.sock"
 fi
 
 # Rootless Docker (Linux)
@@ -108,6 +149,9 @@ if [[ -d "${XDG_DATA_HOME}/google-cloud-sdk" ]]; then
   export CLOUDSDK_ROOT_DIR="${XDG_DATA_HOME}/google-cloud-sdk"
   export PATH="${PATH}:${CLOUDSDK_ROOT_DIR}/bin"
 fi
+
+# Google Cloud CLI
+export BOTO_CONFIG="${XDG_CONFIG_HOME}/boto/config"
 
 # BentoML
 export BENTOML_HOME="${XDG_DATA_HOME}/bentoml"
