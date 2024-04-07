@@ -2,6 +2,7 @@
   "files.associations": {
     "*_profile": "shellscript",
     "*_zprofile": "shellscript",
+    "*_zshenv": "shellscript",
     "*_zshrc": "shellscript",
     "**/openssl/*.cnf": "properties",
 
@@ -9,6 +10,7 @@
     "*.toml.tmpl": "jinja-toml",
     "*_profile.tmpl": "jinja-shell",
     "*_zprofile.tmpl": "jinja-shell",
+    "*_zshenv.tmpl": "jinja-shell",
     "*_zshrc.tmpl": "jinja-shell",
     "**/git/config.tmpl": "jinja-properties",
 

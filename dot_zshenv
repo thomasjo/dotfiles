@@ -1,0 +1,5 @@
+# This file exists solely to support relocating the ZDOTDIR directory, even on
+# systems where we cannot edit /etc/zshenv.
+
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+source "${ZDOTDIR}/.zshenv"

@@ -2,12 +2,6 @@
 # Exports
 # -------
 
-# Explicitly set XDG variables.
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_DATA_HOME="${HOME}/.local/share"
-export XDG_STATE_HOME="${HOME}/.local/state"
-
 # Locale
 export LANG="en_US.UTF-8"
 export LC_ALL="${LANG}"
@@ -23,13 +17,6 @@ elif [[ -n "${SSH_CLIENT}" ]]; then
   export EDITOR="nano"
   export GIT_EDITOR="${EDITOR}"
 fi
-
-# Zsh
-# NOTE: This doesn't seem to work on macOS.
-export HISTFILE="${XDG_STATE_HOME}/zsh/history"
-
-# Less
-export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
 
 # Homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
