@@ -153,6 +153,12 @@ export HISTFILE="${XDG_STATE_HOME}/zsh/history"
 # Less
 export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
 
+##
+# XDG hacks
+# ---------
+
+alias wget="wget --hsts-file=\"${XDG_CACHE_HOME}/wget-hsts\""
+
 
 ##
 # VS Code integrated terminal hacks
