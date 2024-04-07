@@ -93,6 +93,9 @@ fi
 export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/poetry"
 export POETRY_HOME="${XDG_DATA_HOME}/poetry"
 
+# Pipx
+export PIPX_HOME="${XDG_DATA_HOME}/pipx"
+
 # Python
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/startup.py"
 
