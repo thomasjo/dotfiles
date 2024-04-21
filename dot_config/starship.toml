@@ -1,0 +1,58 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+$username\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$character\
+"""
+
+right_format = """
+$cmd_duration\
+$jobs\
+$direnv\
+$python\
+$time\
+"""
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+min_time = 3000
+
+[directory]
+fish_style_pwd_dir_length = 1
+truncate_to_repo = true
+truncation_symbol = '…/'
+
+# TODO: Replace with custom module that just checks for `.envrc`.
+[direnv]
+format = "[$symbol]($style) "
+symbol = "Δ"
+style = "fg:14"
+disabled = true  # Super slow :(
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+truncation_length = 20
+
+[jobs]
+format = "[$symbol(:$number)]($style) "
+symbol = "&"
+
+[line_break]
+disabled = true
+
+[python]
+format = "[$virtualenv]($style) "
+style = "fg:6"
+
+[time]
+format = "[$time]($style)"
+style = 'fg:8'
+disabled = false
