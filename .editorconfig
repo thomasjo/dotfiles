@@ -14,3 +14,6 @@ indent_size = 2
 # Matches e.g., `dot_gitconfig` and `dot_gitconfig.tmpl`.
 [*_gitconfig{,.tmpl}]
 indent_style = tab
+
+[*.fish]
+indent_size = 4
