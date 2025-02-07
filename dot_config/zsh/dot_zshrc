@@ -108,9 +108,6 @@ fi
 # Initialize direnv if installed.
 (( ${+commands[direnv]} )) && _evalcache direnv hook zsh
 
-# Setup hub alias if hub is installed. (git -> hub)
-(( ${+commands[hub]} )) && _evalcache hub alias -s
-
 
 ##
 # Miscellaneous
