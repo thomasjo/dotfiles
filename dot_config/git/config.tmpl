@@ -6,12 +6,12 @@
 	helper = {{ .git.credential.helper }}
 
 [credential "https://github.com"]
-  helper =
-  helper = !gh auth git-credential
+	helper =
+	helper = !gh auth git-credential
 
 [credential "https://gist.github.com"]
-  helper =
-  helper = !gh auth git-credential
+	helper =
+	helper = !gh auth git-credential
 
 [core]
 	autocrlf = input
@@ -79,4 +79,4 @@
 	process = git-lfs filter-process
 
 [include]
-	path = ./config.overrides
+	path = config.overrides
