@@ -21,6 +21,7 @@ $time\
 """
 
 [cmd_duration]
+disabled = true
 format = "[$duration]($style) "
 style = "yellow"
 min_time = 3000
